@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS public.status
 
 CREATE TABLE IF NOT EXISTS public.zip_code
 (
-    zip_code bigint NOT NULL CHECK (zip_code >= 1111 AND zip_code <= 9999),
+    zip_code bigint NOT NULL CHECK (zip_code >=1111 AND zip_code <=9999), 
     city character varying(50) NOT NULL,
     province character varying(50) NOT NULL,
     PRIMARY KEY (zip_code)
@@ -134,7 +134,7 @@ SELECT * FROM status;
 
 --Insert into zip_code
 INSERT INTO zip_code (zip_code, city, province)
-VALUES (4001,'Durban', 'KZN'),
+VALUES (4000,'Durban', 'KZN'),
         (3900,'Richards Bay', 'KZN'),
         (7100,'Cape Town', 'Western Cape'),
         (6530,'George', 'Western Cape'),
@@ -167,12 +167,12 @@ SELECT * FROM seeking;
 
 --Insert into interests
 INSERT INTO interests (interest)
-VALUES ('Cooking, Reading, Tennis'),
-        ('Jazz, Clubbing, Gardening'),
-        ('Travel, Reading, Swimming'),
-        ('Dogs, Cooking, Astronomy'),
-        ('Gaming, Hunting, Karate'),
-        ('Dancing, Theatre, Bowling');
+VALUES ('Cooking'),
+        ('Jazz'),
+        ('Travel'),
+        ('Dogs'),
+        ('Gaming'),
+        ('Dancing');
        
         
 SELECT * FROM interests;
@@ -192,11 +192,17 @@ SELECT * FROM my_contacts;
 --Insert contact_interest
 INSERT INTO contact_interest (contact_id, interest_id)
 VALUES (1,1),
+        (1,2),
+        (2,1),
         (2,2),
-        (3,3),
-        (4,4),
-        (5,5),
-        (6,6);
+        (3,1),
+        (3,2),
+        (4,1),
+        (4,2),
+        (5,1),
+        (5,2),
+        (6,1),
+        (6,2);
         
 SELECT * FROM contact_interest;
 
@@ -250,6 +256,5 @@ ON mc.contact_id = contact_seeking.contact_id
 
 INNER JOIN seeking 
 ON contact_seeking.seeking_id = seeking.seeking_id;
-
 
 END;
