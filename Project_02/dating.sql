@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS public.status
 
 CREATE TABLE IF NOT EXISTS public.zip_code
 (
-    zip_code bigint NOT NULL,
+    zip_code bigint NOT NULL CHECK (zip_code >= 1111 AND zip_code <= 9999),
     city character varying(50) NOT NULL,
     province character varying(50) NOT NULL,
     PRIMARY KEY (zip_code)
